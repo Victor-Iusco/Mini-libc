@@ -6,8 +6,7 @@ Using a Docker container provides two benefits:
 
 1. it uses a given stable setup;
    no need to worry about different versions
-
-1. it provides an isolated environment that can be easily created and destroyed
+2. it provides an isolated environment that can be easily created and destroyed
 
 The Docker container and the checking can be done:
 
@@ -30,8 +29,7 @@ Full instructions on using the checker are part of the [VMChecker Student Handbo
 In order to set up the repository, do the following:
 
 1. Login into your GitLab account using the UPB login at https://gitlab.cs.pub.ro/users/sign_in
-
-1. Make a **private** fork of this repository.
+2. Make a **private** fork of this repository.
    In the right corner you can find the fork button.
    After clicking it, a prompt similar to the one below will be offered:
 
@@ -41,8 +39,7 @@ In order to set up the repository, do the following:
    Make sure the visibility level is set to **Private**.
    Note that the image above is a sample for user `razvan.deaconescu` and for repository `assignment-mini-libc`.
    Adapt it to your needs.
-
-1. Clone the repository locally:
+3. Clone the repository locally:
 
    ```
    $ git clone <remote_of_your_private_fork>
@@ -84,8 +81,7 @@ $ ./local.sh checker
 Note that checking typically consists of two steps:
 
 1. Run the actual tests in the `tests/` directory and grade the assignment.
-
-1. Run linter steps on the solution (and tests) and provide an output.
+2. Run linter steps on the solution (and tests) and provide an output.
    For maximum grade, assignments must remove all warnings and errors from linters.
 
 ## Remote Checker
@@ -130,8 +126,7 @@ For this:
    ```
 
    A file called `src.zip` will be created in the repository root (the parent directory of `src/`).
-
-1. Access the assignment submission entry on Moodle and submit the archive there.
+2. Access the assignment submission entry on Moodle and submit the archive there.
    After submitting, a GitLab run will be triggered with VMChecker.
    In a matter of minutes, results and grade will be available.
 
@@ -148,6 +143,5 @@ You need to fill the items:
 - `Branch`: the Git branch that was used and pushed on the GitLab fork
 
 After filling the items and submitting, a GitLab job will be stared and, then, the results will be made available on Moodle.
-
 
 Recall that full instructions on using the checker are part of the [VMChecker Student Handbook](https://github.com/systems-cs-pub-ro/vmchecker-next/wiki/Student-Handbook).

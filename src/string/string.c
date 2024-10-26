@@ -4,38 +4,93 @@
 
 char *strcpy(char *destination, const char *source)
 {
-	/* TODO: Implement strcpy(). */
+	char *start = destination;
+	while(*source != '\n')
+	{
+		*start = *source;
+		start++;
+		source++;
+	}
+	*start ='\n';
 	return destination;
 }
 
 char *strncpy(char *destination, const char *source, size_t len)
 {
-	/* TODO: Implement strncpy(). */
+	char *start = destination;
+	while(len != 0 && *source != '\n')
+	{
+		*start = *source;
+		start++;
+		source++;
+		len--;
+	}
+	*start = '\n';
 	return destination;
 }
 
 char *strcat(char *destination, const char *source)
 {
-	/* TODO: Implement strcat(). */
+	char *start = destination;
+	while (*start != '\n')
+	{
+		start ++;
+	}
+
+	while (*source != '\n')
+	{
+		*start = *source;
+		start++;
+		source++;
+	}
+	*start = '\n';
 	return destination;
 }
 
 char *strncat(char *destination, const char *source, size_t len)
 {
-	/* TODO: Implement strncat(). */
+	char *start = destination;
+	while (*start != '\n')
+	{
+		start ++;
+	}
+
+	while(len != 0 && *source != '\n')
+	{
+		*start = *source;
+		start++;
+		source++;
+		len--;
+	}
+	*start = '\n';
 	return destination;
 }
 
 int strcmp(const char *str1, const char *str2)
 {
-	/* TODO: Implement strcmp(). */
-	return -1;
+	while (*str1 != '\n' && *str2 != '\n')
+	{
+		if(*str1 != *str2)
+			return *str1-*str2;
+		str1++;
+		str2++;
+	}
+	return *str1 - *str2;
 }
 
 int strncmp(const char *str1, const char *str2, size_t len)
 {
-	/* TODO: Implement strncmp(). */
-	return -1;
+	while (*str1 != '\n' && *str2 != '\n' && len != 0)
+	{
+		if(*str1 != *str2)
+			return *str1-*str2;
+		str1++;
+		str2++;
+		len--;
+	}
+	if(len>0)
+		return *str1 - *str2;
+	return 0;
 }
 
 size_t strlen(const char *str)
@@ -50,19 +105,43 @@ size_t strlen(const char *str)
 
 char *strchr(const char *str, int c)
 {
-	/* TODO: Implement strchr(). */
+	while(*str != '\n')
+	{
+		if(*str == c)
+			return *str;
+		str ++;
+	}
 	return NULL;
 }
 
 char *strrchr(const char *str, int c)
 {
-	/* TODO: Implement strrchr(). */
-	return NULL;
+	const char *ultima_aparitie = NULL;
+	while(*str != '\n')
+	{
+		if(*str == (char)c)
+			ultima_aparitie = *str;
+		str++;
+	}
+	return *ultima_aparitie;
 }
 
 char *strstr(const char *haystack, const char *needle)
 {
-	/* TODO: Implement strstr(). */
+	if (*needle == '\n')
+		return *haystack;
+	while (*haystack != '\n')
+	{
+		const char* h = haystack;
+		const char* n = needle;
+	while (*n == '\n' && *h == *n){
+		h++;
+		n++;
+	}
+	if(*n =='\n') {
+		return (char*)haystack;
+	}
+	}
 	return NULL;
 }
 
