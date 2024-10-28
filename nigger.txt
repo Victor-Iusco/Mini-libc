@@ -1,0 +1,894 @@
+[2024-10-28T14:15:01] [INFO] Building image...
+sha256:850da5564aa9742e14ccc0681fb6b38f25d48c03df87a89eb5457b3a30550f71
+[2024-10-28T14:15:03] [INFO] Running checker...
+
+
+### CHECKER
+
+
+make -C /build/root/assignment-mini-libc/src clean
+make[1]: Entering directory '/build/root/assignment-mini-libc/src'
+rm -f *~
+rm -f syscall.o process/exit.o mm/malloc.o mm/mmap.o mm/mem_list.o string/string.o stat/fstatat.o stat/fstat.o stat/stat.o io/open.o io/close.o io/read_write.o io/lseek.o io/truncate.o io/ftruncate.o errno.o crt/__libc_start_main.o crt/start.o
+rm -f libc.a
+make[1]: Leaving directory '/build/root/assignment-mini-libc/src'
+make clean
+make[1]: Entering directory '/build/root/assignment-mini-libc/tests'
+make -C io clean
+make[2]: Entering directory '/build/root/assignment-mini-libc/tests/io'
+rm -f *~
+rm -f stat.o open_close_create_file.o puts.o open_invalid_access.o open_non_existent_file.o open_close_read_byte.o lseek.o fstat.o truncate.o open_close_existent_file.o ftruncate.o
+rm -f stat open_close_create_file puts open_invalid_access open_non_existent_file open_close_read_byte lseek fstat truncate open_close_existent_file ftruncate
+make[2]: Leaving directory '/build/root/assignment-mini-libc/tests/io'
+make -C memory clean
+make[2]: Entering directory '/build/root/assignment-mini-libc/tests/memory'
+rm -f *~
+rm -f multiple_malloc.o mmap_munmap.o malloc_free.o mmap_perm_none.o mmap_perm_notok.o multiple_malloc_free.o malloc.o malloc_perm_ok.o malloc_free_sequence.o mmap.o malloc_perm_notok.o mmap_perm_ok.o
+rm -f multiple_malloc mmap_munmap malloc_free mmap_perm_none mmap_perm_notok multiple_malloc_free malloc malloc_perm_ok malloc_free_sequence mmap malloc_perm_notok mmap_perm_ok
+make[2]: Leaving directory '/build/root/assignment-mini-libc/tests/memory'
+make -C process clean
+make[2]: Entering directory '/build/root/assignment-mini-libc/tests/process'
+rm -f *~
+rm -f sleep.o nanosleep.o
+rm -f sleep nanosleep
+make[2]: Leaving directory '/build/root/assignment-mini-libc/tests/process'
+rm -f *~
+rm -f graded_test.o test_io.o test_string.o test_memory.o
+rm -f test_io test_string test_memory
+make[1]: Leaving directory '/build/root/assignment-mini-libc/tests'
+make -i SRC_PATH=/build/root/assignment-mini-libc/src
+make[1]: Entering directory '/build/root/assignment-mini-libc/tests'
+make -C /build/root/assignment-mini-libc/src
+make[2]: Entering directory '/build/root/assignment-mini-libc/src'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o syscall.o syscall.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o process/exit.o process/exit.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o mm/malloc.o mm/malloc.c
+mm/malloc.c: In function 'malloc':
+mm/malloc.c:10:21: warning: unused parameter 'size' [-Wunused-parameter]
+   10 | void *malloc(size_t size)
+      |              ~~~~~~~^~~~
+mm/malloc.c: In function 'calloc':
+mm/malloc.c:16:21: warning: unused parameter 'nmemb' [-Wunused-parameter]
+   16 | void *calloc(size_t nmemb, size_t size)
+      |              ~~~~~~~^~~~~
+mm/malloc.c:16:35: warning: unused parameter 'size' [-Wunused-parameter]
+   16 | void *calloc(size_t nmemb, size_t size)
+      |                            ~~~~~~~^~~~
+mm/malloc.c: In function 'free':
+mm/malloc.c:22:17: warning: unused parameter 'ptr' [-Wunused-parameter]
+   22 | void free(void *ptr)
+      |           ~~~~~~^~~
+mm/malloc.c: In function 'realloc':
+mm/malloc.c:27:21: warning: unused parameter 'ptr' [-Wunused-parameter]
+   27 | void *realloc(void *ptr, size_t size)
+      |               ~~~~~~^~~
+mm/malloc.c:27:33: warning: unused parameter 'size' [-Wunused-parameter]
+   27 | void *realloc(void *ptr, size_t size)
+      |                          ~~~~~~~^~~~
+mm/malloc.c: In function 'reallocarray':
+mm/malloc.c:33:26: warning: unused parameter 'ptr' [-Wunused-parameter]
+   33 | void *reallocarray(void *ptr, size_t nmemb, size_t size)
+      |                    ~~~~~~^~~
+mm/malloc.c:33:38: warning: unused parameter 'nmemb' [-Wunused-parameter]
+   33 | void *reallocarray(void *ptr, size_t nmemb, size_t size)
+      |                               ~~~~~~~^~~~~
+mm/malloc.c:33:52: warning: unused parameter 'size' [-Wunused-parameter]
+   33 | void *reallocarray(void *ptr, size_t nmemb, size_t size)
+      |                                             ~~~~~~~^~~~
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o mm/mmap.o mm/mmap.c
+mm/mmap.c: In function 'mmap':
+mm/mmap.c:7:18: warning: unused parameter 'addr' [-Wunused-parameter]
+    7 | void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
+      |            ~~~~~~^~~~
+mm/mmap.c:7:31: warning: unused parameter 'length' [-Wunused-parameter]
+    7 | void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
+      |                        ~~~~~~~^~~~~~
+mm/mmap.c:7:43: warning: unused parameter 'prot' [-Wunused-parameter]
+    7 | void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
+      |                                       ~~~~^~~~
+mm/mmap.c:7:53: warning: unused parameter 'flags' [-Wunused-parameter]
+    7 | void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
+      |                                                 ~~~~^~~~~
+mm/mmap.c:7:64: warning: unused parameter 'fd' [-Wunused-parameter]
+    7 | void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
+      |                                                            ~~~~^~
+mm/mmap.c:7:74: warning: unused parameter 'offset' [-Wunused-parameter]
+    7 | void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
+      |                                                                    ~~~~~~^~~~~~
+mm/mmap.c: In function 'mremap':
+mm/mmap.c:13:20: warning: unused parameter 'old_address' [-Wunused-parameter]
+   13 | void *mremap(void *old_address, size_t old_size, size_t new_size, int flags)
+      |              ~~~~~~^~~~~~~~~~~
+mm/mmap.c:13:40: warning: unused parameter 'old_size' [-Wunused-parameter]
+   13 | void *mremap(void *old_address, size_t old_size, size_t new_size, int flags)
+      |                                 ~~~~~~~^~~~~~~~
+mm/mmap.c:13:57: warning: unused parameter 'new_size' [-Wunused-parameter]
+   13 | void *mremap(void *old_address, size_t old_size, size_t new_size, int flags)
+      |                                                  ~~~~~~~^~~~~~~~
+mm/mmap.c:13:71: warning: unused parameter 'flags' [-Wunused-parameter]
+   13 | void *mremap(void *old_address, size_t old_size, size_t new_size, int flags)
+      |                                                                   ~~~~^~~~~
+mm/mmap.c: In function 'munmap':
+mm/mmap.c:19:18: warning: unused parameter 'addr' [-Wunused-parameter]
+   19 | int munmap(void *addr, size_t length)
+      |            ~~~~~~^~~~
+mm/mmap.c:19:31: warning: unused parameter 'length' [-Wunused-parameter]
+   19 | int munmap(void *addr, size_t length)
+      |                        ~~~~~~~^~~~~~
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o mm/mem_list.o mm/mem_list.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o string/string.o string/string.c
+string/string.c: In function 'strchr':
+string/string.c:111:11: warning: returning 'char' from a function with return type 'char *' makes pointer from integer without a cast [-Wint-conversion]
+  111 |    return *str;
+      |           ^~~~
+string/string.c: In function 'strrchr':
+string/string.c:123:20: warning: assignment to 'const char *' from 'char' makes pointer from integer without a cast [-Wint-conversion]
+  123 |    ultima_aparitie = *str;
+      |                    ^
+string/string.c:126:9: warning: returning 'char' from a function with return type 'char *' makes pointer from integer without a cast [-Wint-conversion]
+  126 |  return *ultima_aparitie;
+      |         ^~~~~~~~~~~~~~~~
+string/string.c: In function 'strstr':
+string/string.c:132:10: warning: returning 'char' from a function with return type 'char *' makes pointer from integer without a cast [-Wint-conversion]
+  132 |   return *haystack;
+      |          ^~~~~~~~~
+string/string.c: In function 'strrstr':
+string/string.c:151:10: warning: returning 'char' from a function with return type 'char *' makes pointer from integer without a cast [-Wint-conversion]
+  151 |   return *haystack;
+      |          ^~~~~~~~~
+string/string.c:156:10: warning: assignment to 'char *' from 'char' makes pointer from integer without a cast [-Wint-conversion]
+  156 |   ultima = *start;
+      |          ^
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o stat/fstatat.o stat/fstatat.c
+stat/fstatat.c: In function 'fstatat_statx':
+stat/fstatat.c:43:23: warning: unused parameter 'fd' [-Wunused-parameter]
+   43 | int fstatat_statx(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |                   ~~~~^~
+stat/fstatat.c:43:48: warning: unused parameter 'path' [-Wunused-parameter]
+   43 | int fstatat_statx(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |                           ~~~~~~~~~~~~~~~~~~~~~^~~~
+stat/fstatat.c:43:76: warning: unused parameter 'st' [-Wunused-parameter]
+   43 | int fstatat_statx(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |                                                      ~~~~~~~~~~~~~~~~~~~~~~^~
+stat/fstatat.c:43:84: warning: unused parameter 'flag' [-Wunused-parameter]
+   43 | int fstatat_statx(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |                                                                                ~~~~^~~~
+stat/fstatat.c: In function 'fstatat':
+stat/fstatat.c:49:17: warning: unused parameter 'fd' [-Wunused-parameter]
+   49 | int fstatat(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |             ~~~~^~
+stat/fstatat.c:49:42: warning: unused parameter 'path' [-Wunused-parameter]
+   49 | int fstatat(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |                     ~~~~~~~~~~~~~~~~~~~~~^~~~
+stat/fstatat.c:49:70: warning: unused parameter 'st' [-Wunused-parameter]
+   49 | int fstatat(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |                                                ~~~~~~~~~~~~~~~~~~~~~~^~
+stat/fstatat.c:49:78: warning: unused parameter 'flag' [-Wunused-parameter]
+   49 | int fstatat(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |                                                                          ~~~~^~~~
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o stat/fstat.o stat/fstat.c
+stat/fstat.c: In function 'fstat':
+stat/fstat.c:7:15: warning: unused parameter 'fd' [-Wunused-parameter]
+    7 | int fstat(int fd, struct stat *st)
+      |           ~~~~^~
+stat/fstat.c:7:32: warning: unused parameter 'st' [-Wunused-parameter]
+    7 | int fstat(int fd, struct stat *st)
+      |                   ~~~~~~~~~~~~~^~
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o stat/stat.o stat/stat.c
+stat/stat.c: In function 'stat':
+stat/stat.c:8:31: warning: unused parameter 'path' [-Wunused-parameter]
+    8 | int stat(const char *restrict path, struct stat *restrict buf)
+      |          ~~~~~~~~~~~~~~~~~~~~~^~~~
+stat/stat.c:8:59: warning: unused parameter 'buf' [-Wunused-parameter]
+    8 | int stat(const char *restrict path, struct stat *restrict buf)
+      |                                     ~~~~~~~~~~~~~~~~~~~~~~^~~
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/open.o io/open.c
+io/open.c: In function 'open':
+io/open.c:8:22: warning: unused parameter 'filename' [-Wunused-parameter]
+    8 | int open(const char *filename, int flags, ...)
+      |          ~~~~~~~~~~~~^~~~~~~~
+io/open.c:8:36: warning: unused parameter 'flags' [-Wunused-parameter]
+    8 | int open(const char *filename, int flags, ...)
+      |                                ~~~~^~~~~
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/close.o io/close.c
+io/close.c: In function 'close':
+io/close.c:8:15: warning: unused parameter 'fd' [-Wunused-parameter]
+    8 | int close(int fd)
+      |           ~~~~^~
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/read_write.o io/read_write.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/lseek.o io/lseek.c
+io/lseek.c: In function 'lseek':
+io/lseek.c:7:17: warning: unused parameter 'fd' [-Wunused-parameter]
+    7 | off_t lseek(int fd, off_t offset, int whence)
+      |             ~~~~^~
+io/lseek.c:7:27: warning: unused parameter 'offset' [-Wunused-parameter]
+    7 | off_t lseek(int fd, off_t offset, int whence)
+      |                     ~~~~~~^~~~~~
+io/lseek.c:7:39: warning: unused parameter 'whence' [-Wunused-parameter]
+    7 | off_t lseek(int fd, off_t offset, int whence)
+      |                                   ~~~~^~~~~~
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/truncate.o io/truncate.c
+io/truncate.c: In function 'truncate':
+io/truncate.c:7:26: warning: unused parameter 'path' [-Wunused-parameter]
+    7 | int truncate(const char *path, off_t length)
+      |              ~~~~~~~~~~~~^~~~
+io/truncate.c:7:38: warning: unused parameter 'length' [-Wunused-parameter]
+    7 | int truncate(const char *path, off_t length)
+      |                                ~~~~~~^~~~~~
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/ftruncate.o io/ftruncate.c
+io/ftruncate.c: In function 'ftruncate':
+io/ftruncate.c:7:19: warning: unused parameter 'fd' [-Wunused-parameter]
+    7 | int ftruncate(int fd, off_t length)
+      |               ~~~~^~
+io/ftruncate.c:7:29: warning: unused parameter 'length' [-Wunused-parameter]
+    7 | int ftruncate(int fd, off_t length)
+      |                       ~~~~~~^~~~~~
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o errno.o errno.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o crt/__libc_start_main.o crt/__libc_start_main.c
+nasm -f elf64 -o crt/start.o crt/start.asm
+ar -rc libc.a syscall.o process/exit.o mm/malloc.o mm/mmap.o mm/mem_list.o string/string.o stat/fstatat.o stat/fstat.o stat/stat.o io/open.o io/close.o io/read_write.o io/lseek.o io/truncate.o io/ftruncate.o errno.o crt/__libc_start_main.o crt/start.o
+make[2]: Leaving directory '/build/root/assignment-mini-libc/src'
+make -C io SRC_PATH=/build/root/assignment-mini-libc/src
+make[2]: Entering directory '/build/root/assignment-mini-libc/tests/io'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o stat.o stat.c
+make -C /build/root/assignment-mini-libc/src
+make[3]: Entering directory '/build/root/assignment-mini-libc/src'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/build/root/assignment-mini-libc/src'
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o stat stat.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o open_close_create_file.o open_close_create_file.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o open_close_create_file open_close_create_file.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o puts.o puts.c
+puts.c: In function 'main':
+puts.c:7:2: warning: implicit declaration of function 'puts' [-Wimplicit-function-declaration]
+    7 |  puts("Hello, World!");
+      |  ^~~~
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o puts puts.o -lc
+/usr/bin/ld: puts.o: in function `main':
+/build/root/assignment-mini-libc/tests/io/puts.c:7: undefined reference to `puts'
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: puts] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o open_invalid_access.o open_invalid_access.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o open_invalid_access open_invalid_access.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o open_non_existent_file.o open_non_existent_file.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o open_non_existent_file open_non_existent_file.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o open_close_read_byte.o open_close_read_byte.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o open_close_read_byte open_close_read_byte.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o lseek.o lseek.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o lseek lseek.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o fstat.o fstat.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o fstat fstat.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o truncate.o truncate.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o truncate truncate.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o open_close_existent_file.o open_close_existent_file.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o open_close_existent_file open_close_existent_file.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o ftruncate.o ftruncate.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o ftruncate ftruncate.o -lc
+make[2]: Leaving directory '/build/root/assignment-mini-libc/tests/io'
+make -C memory SRC_PATH=/build/root/assignment-mini-libc/src
+make[2]: Entering directory '/build/root/assignment-mini-libc/tests/memory'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o multiple_malloc.o multiple_malloc.c
+make -C /build/root/assignment-mini-libc/src
+make[3]: Entering directory '/build/root/assignment-mini-libc/src'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/build/root/assignment-mini-libc/src'
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o multiple_malloc multiple_malloc.o -lc
+/usr/bin/ld: multiple_malloc.o: in function `main':
+/build/root/assignment-mini-libc/tests/memory/multiple_malloc.c:13: undefined reference to `sleep'
+/usr/bin/ld: /build/root/assignment-mini-libc/tests/memory/multiple_malloc.c:27: undefined reference to `sleep'
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: multiple_malloc] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o mmap_munmap.o mmap_munmap.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o mmap_munmap mmap_munmap.o -lc
+/usr/bin/ld: mmap_munmap.o: in function `main':
+/build/root/assignment-mini-libc/tests/memory/mmap_munmap.c:14: undefined reference to `sleep'
+/usr/bin/ld: /build/root/assignment-mini-libc/tests/memory/mmap_munmap.c:22: undefined reference to `sleep'
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: mmap_munmap] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o malloc_free.o malloc_free.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o malloc_free malloc_free.o -lc
+/usr/bin/ld: malloc_free.o: in function `main':
+/build/root/assignment-mini-libc/tests/memory/malloc_free.c:13: undefined reference to `sleep'
+/usr/bin/ld: /build/root/assignment-mini-libc/tests/memory/malloc_free.c:20: undefined reference to `sleep'
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: malloc_free] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o mmap_perm_none.o mmap_perm_none.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o mmap_perm_none mmap_perm_none.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o mmap_perm_notok.o mmap_perm_notok.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o mmap_perm_notok mmap_perm_notok.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o multiple_malloc_free.o multiple_malloc_free.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o multiple_malloc_free multiple_malloc_free.o -lc
+/usr/bin/ld: multiple_malloc_free.o: in function `main':
+/build/root/assignment-mini-libc/tests/memory/multiple_malloc_free.c:13: undefined reference to `sleep'
+/usr/bin/ld: /build/root/assignment-mini-libc/tests/memory/multiple_malloc_free.c:31: undefined reference to `sleep'
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: multiple_malloc_free] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o malloc.o malloc.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o malloc malloc.o -lc
+/usr/bin/ld: malloc.o: in function `main':
+/build/root/assignment-mini-libc/tests/memory/malloc.c:13: undefined reference to `sleep'
+/usr/bin/ld: /build/root/assignment-mini-libc/tests/memory/malloc.c:19: undefined reference to `sleep'
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: malloc] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o malloc_perm_ok.o malloc_perm_ok.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o malloc_perm_ok malloc_perm_ok.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o malloc_free_sequence.o malloc_free_sequence.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o malloc_free_sequence malloc_free_sequence.o -lc
+/usr/bin/ld: malloc_free_sequence.o: in function `main':
+/build/root/assignment-mini-libc/tests/memory/malloc_free_sequence.c:13: undefined reference to `sleep'
+/usr/bin/ld: /build/root/assignment-mini-libc/tests/memory/malloc_free_sequence.c:30: undefined reference to `sleep'
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: malloc_free_sequence] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o mmap.o mmap.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o mmap mmap.o -lc
+/usr/bin/ld: mmap.o: in function `main':
+/build/root/assignment-mini-libc/tests/memory/mmap.c:14: undefined reference to `sleep'
+/usr/bin/ld: /build/root/assignment-mini-libc/tests/memory/mmap.c:20: undefined reference to `sleep'
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: mmap] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o malloc_perm_notok.o malloc_perm_notok.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o malloc_perm_notok malloc_perm_notok.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o mmap_perm_ok.o mmap_perm_ok.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o mmap_perm_ok mmap_perm_ok.o -lc
+make[2]: Leaving directory '/build/root/assignment-mini-libc/tests/memory'
+make -C process SRC_PATH=/build/root/assignment-mini-libc/src
+make[2]: Entering directory '/build/root/assignment-mini-libc/tests/process'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o sleep.o sleep.c
+make -C /build/root/assignment-mini-libc/src
+make[3]: Entering directory '/build/root/assignment-mini-libc/src'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/build/root/assignment-mini-libc/src'
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o sleep sleep.o -lc
+/usr/bin/ld: sleep.o: in function `main':
+/build/root/assignment-mini-libc/tests/process/sleep.c:7: undefined reference to `sleep'
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: sleep] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o nanosleep.o nanosleep.c
+nanosleep.c:3:10: fatal error: time.h: No such file or directory
+    3 | #include <time.h>
+      |          ^~~~~~~~
+compilation terminated.
+make[2]: [<builtin>: nanosleep.o] Error 1 (ignored)
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o nanosleep nanosleep.o -lc
+cc: error: nanosleep.o: No such file or directory
+make[2]: [Makefile:19: nanosleep] Error 1 (ignored)
+make[2]: Leaving directory '/build/root/assignment-mini-libc/tests/process'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o test_io.o test_io.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o graded_test.o graded_test.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o test_io test_io.o graded_test.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o test_string.o test_string.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o test_string test_string.o graded_test.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/root/assignment-mini-libc/src/include  -c -o test_memory.o test_memory.c
+cc -nostdlib -no-pie -L/build/root/assignment-mini-libc/src -o test_memory test_memory.o graded_test.o -lc
+make[1]: Leaving directory '/build/root/assignment-mini-libc/tests'
+./run_all_tests.sh
+./run_all_tests.sh: line 34:   272 Segmentation fault      (core dumped) ./test_string
+test_open_non_existent_file      ........................ failed ...   0
+test_open_file_as_directory      ........................ failed ...   0
+test_open_directory_for_writing  ........................ failed ...   0
+test_open_force_invalid_creation ........................ failed ...   0
+test_open_close_existent_file    ........................ failed ...   0
+test_open_close_create_file      ........................ failed ...   0
+test_open_read_write_only_mode   ........................ failed ...   0
+test_open_write_read_only_mode   ........................ failed ...   0
+test_lseek_invalid_fd            ........................ failed ...   0
+test_lseek_invalid_whence        ........................ failed ...   0
+test_lseek_invalid_offset        ........................ failed ...   0
+test_lseek_set                   ........................ failed ...   0
+test_lseek_cur                   ........................ failed ...   0
+test_lseek_end                   ........................ failed ...   0
+test_lseek_combined              ........................ failed ...   0
+test_truncate_invalid_size       ........................ failed ...   0
+test_truncate_directory          ........................ failed ...   0
+test_truncate_non_existent_file  ........................ failed ...   0
+test_truncate_file               ........................ failed ...   0
+test_ftruncate_read_only_file    ........................ failed ...   0
+test_ftruncate_invalid_size      ........................ failed ...   0
+test_ftruncate_directory         ........................ failed ...   0
+test_ftruncate_bad_fd            ........................ failed ...   0
+test_ftruncate_file              ........................ failed ...   0
+test_stat_non_existent_file      ........................ failed ...   0
+test_stat_regular_file           ........................ failed ...   0
+test_fstat_bad_fd                ........................ failed ...   0
+test_fstat_regular_file          ........................ failed ...   0
+No such file ./io/puts
+test_puts                        ........................ failed ...  0
+test_open_close_create_file      ........................ failed ...  0
+--- /dev/fd/63	2024-10-28 13:15:05.274109675 +0200
++++ /dev/fd/62	2024-10-28 13:15:05.274109675 +0200
+@@ -0,0 +1 @@
++a
+test_open_close_read_byte        ........................ failed ...  0
+test_ftruncate                   ........................ failed ...  0
+test_truncate                    ........................ failed ...  0
+--- /dev/fd/63	2024-10-28 13:15:05.315537564 +0200
++++ /dev/fd/62	2024-10-28 13:15:05.315537564 +0200
+@@ -1 +0,0 @@
+-146134 0 0 1 0 0 1730114105
+test_fstat                       ........................ failed ...  0
+--- /dev/fd/63	2024-10-28 13:15:05.315537564 +0200
++++ /dev/fd/62	2024-10-28 13:15:05.315537564 +0200
+@@ -1 +0,0 @@
+-146134 0 0 1 0 0 1730114105
+test_stat                        ........................ failed ...  0
+No such file ./process/sleep
+test_sleep                       ........................ failed ...  0
+No such file ./process/nanosleep
+test_nanosleep                   ........................ failed ...  0
+test_mmap                        ........................ failed ...   0
+test_mmap_bad_fd                 ........................ failed ...   0
+test_mmap_bad_flags              ........................ failed ...   0
+test_mremap                      ........................ failed ...   0
+test_malloc                      ........................ failed ...   0
+test_malloc_two                  ........................ failed ...   0
+./run_all_tests.sh: line 34:   349 Segmentation fault      (core dumped) ./test_memory
+No such file ./memory/malloc
+test_malloc                      ........................ failed ...  0
+No such file ./memory/multiple_malloc
+test_multiple_malloc             ........................ failed ...  0
+No such file ./memory/malloc_free
+test_malloc_free                 ........................ failed ...  0
+No such file ./memory/multiple_malloc_free
+test_multiple_malloc_free        ........................ failed ...  0
+No such file ./memory/malloc_free_sequence
+test_malloc_free_sequence        ........................ failed ...  0
+No mmap syscall
+test_malloc_perm_ok              ........................ failed ...  0
+test_malloc_perm_notok           ........................ failed ...  0
+No such file ./memory/mmap
+test_mmap                        ........................ failed ...  0
+No such file ./memory/mmap_munmap
+test_mmap_munmap                 ........................ failed ...  0
+test_mmap_perm_ok                ........................ failed ...  0
+test_mmap_perm_notok             ........................ failed ...  0
+test_mmap_perm_none              ........................ failed ...  0
+
+Checker:                                                             0/100
+
+
+### LINTER
+
+
+cd .. && checkpatch.pl -f src/*.c tests/*.c tests/*/*.c
+-----------
+src/errno.c
+-----------
+total: 0 errors, 0 warnings, 5 lines checked
+
+src/errno.c has no obvious style problems and is ready for submission.
+-------------
+src/syscall.c
+-------------
+total: 0 errors, 0 warnings, 21 lines checked
+
+src/syscall.c has no obvious style problems and is ready for submission.
+-------------------
+tests/graded_test.c
+-------------------
+total: 0 errors, 0 warnings, 116 lines checked
+
+tests/graded_test.c has no obvious style problems and is ready for submission.
+---------------
+tests/test_io.c
+---------------
+total: 0 errors, 0 warnings, 431 lines checked
+
+tests/test_io.c has no obvious style problems and is ready for submission.
+-------------------
+tests/test_memory.c
+-------------------
+total: 0 errors, 0 warnings, 175 lines checked
+
+tests/test_memory.c has no obvious style problems and is ready for submission.
+-------------------
+tests/test_string.c
+-------------------
+total: 0 errors, 0 warnings, 517 lines checked
+
+tests/test_string.c has no obvious style problems and is ready for submission.
+----------------
+tests/io/fstat.c
+----------------
+total: 0 errors, 0 warnings, 115 lines checked
+
+tests/io/fstat.c has no obvious style problems and is ready for submission.
+--------------------
+tests/io/ftruncate.c
+--------------------
+total: 0 errors, 0 warnings, 29 lines checked
+
+tests/io/ftruncate.c has no obvious style problems and is ready for submission.
+----------------
+tests/io/lseek.c
+----------------
+total: 0 errors, 0 warnings, 39 lines checked
+
+tests/io/lseek.c has no obvious style problems and is ready for submission.
+---------------------------------
+tests/io/open_close_create_file.c
+---------------------------------
+total: 0 errors, 0 warnings, 24 lines checked
+
+tests/io/open_close_create_file.c has no obvious style problems and is ready for submission.
+-----------------------------------
+tests/io/open_close_existent_file.c
+-----------------------------------
+total: 0 errors, 0 warnings, 24 lines checked
+
+tests/io/open_close_existent_file.c has no obvious style problems and is ready for submission.
+-------------------------------
+tests/io/open_close_read_byte.c
+-------------------------------
+total: 0 errors, 0 warnings, 33 lines checked
+
+tests/io/open_close_read_byte.c has no obvious style problems and is ready for submission.
+------------------------------
+tests/io/open_invalid_access.c
+------------------------------
+total: 0 errors, 0 warnings, 24 lines checked
+
+tests/io/open_invalid_access.c has no obvious style problems and is ready for submission.
+---------------------------------
+tests/io/open_non_existent_file.c
+---------------------------------
+total: 0 errors, 0 warnings, 20 lines checked
+
+tests/io/open_non_existent_file.c has no obvious style problems and is ready for submission.
+---------------
+tests/io/puts.c
+---------------
+total: 0 errors, 0 warnings, 10 lines checked
+
+tests/io/puts.c has no obvious style problems and is ready for submission.
+---------------
+tests/io/stat.c
+---------------
+total: 0 errors, 0 warnings, 106 lines checked
+
+tests/io/stat.c has no obvious style problems and is ready for submission.
+-------------------
+tests/io/truncate.c
+-------------------
+total: 0 errors, 0 warnings, 20 lines checked
+
+tests/io/truncate.c has no obvious style problems and is ready for submission.
+---------------------
+tests/memory/malloc.c
+---------------------
+total: 0 errors, 0 warnings, 22 lines checked
+
+tests/memory/malloc.c has no obvious style problems and is ready for submission.
+--------------------------
+tests/memory/malloc_free.c
+--------------------------
+total: 0 errors, 0 warnings, 23 lines checked
+
+tests/memory/malloc_free.c has no obvious style problems and is ready for submission.
+-----------------------------------
+tests/memory/malloc_free_sequence.c
+-----------------------------------
+total: 0 errors, 0 warnings, 33 lines checked
+
+tests/memory/malloc_free_sequence.c has no obvious style problems and is ready for submission.
+--------------------------------
+tests/memory/malloc_perm_notok.c
+--------------------------------
+total: 0 errors, 0 warnings, 22 lines checked
+
+tests/memory/malloc_perm_notok.c has no obvious style problems and is ready for submission.
+-----------------------------
+tests/memory/malloc_perm_ok.c
+-----------------------------
+total: 0 errors, 0 warnings, 22 lines checked
+
+tests/memory/malloc_perm_ok.c has no obvious style problems and is ready for submission.
+-------------------
+tests/memory/mmap.c
+-------------------
+total: 0 errors, 0 warnings, 23 lines checked
+
+tests/memory/mmap.c has no obvious style problems and is ready for submission.
+--------------------------
+tests/memory/mmap_munmap.c
+--------------------------
+total: 0 errors, 0 warnings, 25 lines checked
+
+tests/memory/mmap_munmap.c has no obvious style problems and is ready for submission.
+-----------------------------
+tests/memory/mmap_perm_none.c
+-----------------------------
+total: 0 errors, 0 warnings, 24 lines checked
+
+tests/memory/mmap_perm_none.c has no obvious style problems and is ready for submission.
+------------------------------
+tests/memory/mmap_perm_notok.c
+------------------------------
+total: 0 errors, 0 warnings, 20 lines checked
+
+tests/memory/mmap_perm_notok.c has no obvious style problems and is ready for submission.
+---------------------------
+tests/memory/mmap_perm_ok.c
+---------------------------
+total: 0 errors, 0 warnings, 20 lines checked
+
+tests/memory/mmap_perm_ok.c has no obvious style problems and is ready for submission.
+------------------------------
+tests/memory/multiple_malloc.c
+------------------------------
+total: 0 errors, 0 warnings, 30 lines checked
+
+tests/memory/multiple_malloc.c has no obvious style problems and is ready for submission.
+-----------------------------------
+tests/memory/multiple_malloc_free.c
+-----------------------------------
+total: 0 errors, 0 warnings, 34 lines checked
+
+tests/memory/multiple_malloc_free.c has no obvious style problems and is ready for submission.
+-------------------------
+tests/process/nanosleep.c
+-------------------------
+total: 0 errors, 0 warnings, 14 lines checked
+
+tests/process/nanosleep.c has no obvious style problems and is ready for submission.
+---------------------
+tests/process/sleep.c
+---------------------
+total: 0 errors, 0 warnings, 10 lines checked
+
+tests/process/sleep.c has no obvious style problems and is ready for submission.
+
+NOTE: Ignored message types: ARRAY_SIZE AVOID_EXTERNS C99_COMMENTS EMAIL_SUBJECT ENOSYS FILE_PATH_CHANGES GIT_COMMIT_ID NEW_TYPEDEFS STRCPY STRNCPY SYMBOLIC_PERMS
+cd .. && checkpatch.pl -f checker/*.sh tests/*.sh
+------------------
+checker/checker.sh
+------------------
+total: 0 errors, 0 warnings, 11 lines checked
+
+checker/checker.sh has no obvious style problems and is ready for submission.
+--------------
+tests/grade.sh
+--------------
+total: 0 errors, 0 warnings, 136 lines checked
+
+tests/grade.sh has no obvious style problems and is ready for submission.
+------------------------
+tests/graded_test.inc.sh
+------------------------
+total: 0 errors, 0 warnings, 41 lines checked
+
+tests/graded_test.inc.sh has no obvious style problems and is ready for submission.
+----------------------
+tests/run_all_tests.sh
+----------------------
+total: 0 errors, 0 warnings, 43 lines checked
+
+tests/run_all_tests.sh has no obvious style problems and is ready for submission.
+-------------------
+tests/test_fstat.sh
+-------------------
+total: 0 errors, 0 warnings, 40 lines checked
+
+tests/test_fstat.sh has no obvious style problems and is ready for submission.
+-----------------------
+tests/test_ftruncate.sh
+-----------------------
+total: 0 errors, 0 warnings, 46 lines checked
+
+tests/test_ftruncate.sh has no obvious style problems and is ready for submission.
+----------------------------
+tests/test_io_file_create.sh
+----------------------------
+total: 0 errors, 0 warnings, 16 lines checked
+
+tests/test_io_file_create.sh has no obvious style problems and is ready for submission.
+----------------------------
+tests/test_io_file_delete.sh
+----------------------------
+total: 0 errors, 0 warnings, 17 lines checked
+
+tests/test_io_file_delete.sh has no obvious style problems and is ready for submission.
+-------------------
+tests/test_lseek.sh
+-------------------
+total: 0 errors, 0 warnings, 40 lines checked
+
+tests/test_lseek.sh has no obvious style problems and is ready for submission.
+--------------------
+tests/test_malloc.sh
+--------------------
+total: 0 errors, 0 warnings, 56 lines checked
+
+tests/test_malloc.sh has no obvious style problems and is ready for submission.
+-------------------------
+tests/test_malloc_free.sh
+-------------------------
+total: 0 errors, 0 warnings, 68 lines checked
+
+tests/test_malloc_free.sh has no obvious style problems and is ready for submission.
+----------------------------------
+tests/test_malloc_free_sequence.sh
+----------------------------------
+total: 0 errors, 0 warnings, 56 lines checked
+
+tests/test_malloc_free_sequence.sh has no obvious style problems and is ready for submission.
+-------------------------------
+tests/test_malloc_perm_notok.sh
+-------------------------------
+total: 0 errors, 0 warnings, 47 lines checked
+
+tests/test_malloc_perm_notok.sh has no obvious style problems and is ready for submission.
+----------------------------
+tests/test_malloc_perm_ok.sh
+----------------------------
+total: 0 errors, 0 warnings, 47 lines checked
+
+tests/test_malloc_perm_ok.sh has no obvious style problems and is ready for submission.
+------------------
+tests/test_mmap.sh
+------------------
+total: 0 errors, 0 warnings, 50 lines checked
+
+tests/test_mmap.sh has no obvious style problems and is ready for submission.
+-------------------------
+tests/test_mmap_munmap.sh
+-------------------------
+total: 0 errors, 0 warnings, 50 lines checked
+
+tests/test_mmap_munmap.sh has no obvious style problems and is ready for submission.
+----------------------------
+tests/test_mmap_perm_none.sh
+----------------------------
+total: 0 errors, 0 warnings, 41 lines checked
+
+tests/test_mmap_perm_none.sh has no obvious style problems and is ready for submission.
+-----------------------------
+tests/test_mmap_perm_notok.sh
+-----------------------------
+total: 0 errors, 0 warnings, 41 lines checked
+
+tests/test_mmap_perm_notok.sh has no obvious style problems and is ready for submission.
+--------------------------
+tests/test_mmap_perm_ok.sh
+--------------------------
+total: 0 errors, 0 warnings, 41 lines checked
+
+tests/test_mmap_perm_ok.sh has no obvious style problems and is ready for submission.
+-----------------------------
+tests/test_multiple_malloc.sh
+-----------------------------
+total: 0 errors, 0 warnings, 56 lines checked
+
+tests/test_multiple_malloc.sh has no obvious style problems and is ready for submission.
+----------------------------------
+tests/test_multiple_malloc_free.sh
+----------------------------------
+total: 0 errors, 0 warnings, 56 lines checked
+
+tests/test_multiple_malloc_free.sh has no obvious style problems and is ready for submission.
+-----------------------
+tests/test_nanosleep.sh
+-----------------------
+total: 0 errors, 0 warnings, 46 lines checked
+
+tests/test_nanosleep.sh has no obvious style problems and is ready for submission.
+------------------------
+tests/test_open_close.sh
+------------------------
+total: 0 errors, 0 warnings, 79 lines checked
+
+tests/test_open_close.sh has no obvious style problems and is ready for submission.
+------------------
+tests/test_puts.sh
+------------------
+total: 0 errors, 0 warnings, 38 lines checked
+
+tests/test_puts.sh has no obvious style problems and is ready for submission.
+-------------------
+tests/test_sleep.sh
+-------------------
+total: 0 errors, 0 warnings, 52 lines checked
+
+tests/test_sleep.sh has no obvious style problems and is ready for submission.
+------------------
+tests/test_stat.sh
+------------------
+total: 0 errors, 0 warnings, 41 lines checked
+
+tests/test_stat.sh has no obvious style problems and is ready for submission.
+----------------------
+tests/test_truncate.sh
+----------------------
+total: 0 errors, 0 warnings, 46 lines checked
+
+tests/test_truncate.sh has no obvious style problems and is ready for submission.
+
+NOTE: Ignored message types: ARRAY_SIZE AVOID_EXTERNS C99_COMMENTS EMAIL_SUBJECT ENOSYS FILE_PATH_CHANGES GIT_COMMIT_ID NEW_TYPEDEFS STRCPY STRNCPY SYMBOLIC_PERMS
+cd .. && cpplint --recursive src/ tests/ checker/
+src/string/string.c:37:  Extra space for operator  ++;  [whitespace/operators] [4]
+src/string/string.c:55:  Extra space for operator  ++;  [whitespace/operators] [4]
+src/string/string.c:91:  Missing spaces around >  [whitespace/operators] [3]
+src/string/string.c:112:  Extra space for operator  ++;  [whitespace/operators] [4]
+src/string/string.c:157:  Extra space for operator  ++;  [whitespace/operators] [4]
+src/string/string.c:182:  An else should appear on the same line as the preceding }  [whitespace/newline] [4]
+Done processing src/crt/__libc_start_main.c
+Done processing src/errno.c
+Done processing src/include/errno.h
+Done processing src/include/fcntl.h
+Done processing src/include/internal/arch/x86_64/syscall_arch.h
+Done processing src/include/internal/arch/x86_64/syscall_list.h
+Done processing src/include/internal/essentials.h
+Done processing src/include/internal/io.h
+Done processing src/include/internal/mm/mem_list.h
+Done processing src/include/internal/syscall.h
+Done processing src/include/internal/types.h
+Done processing src/include/stdarg.h
+Done processing src/include/stddef.h
+Done processing src/include/stdio.h
+Done processing src/include/stdlib.h
+Done processing src/include/string.h
+Done processing src/include/sys/mman.h
+Done processing src/include/sys/stat.h
+Done processing src/include/sys/types.h
+Done processing src/include/unistd.h
+Done processing src/io/close.c
+Done processing src/io/ftruncate.c
+Done processing src/io/lseek.c
+Done processing src/io/open.c
+Done processing src/io/read_write.c
+Done processing src/io/truncate.c
+Done processing src/mm/malloc.c
+Done processing src/mm/mem_list.c
+Done processing src/mm/mmap.c
+Done processing src/process/exit.c
+Done processing src/stat/fstat.c
+Done processing src/stat/fstatat.c
+Done processing src/stat/stat.c
+Done processing src/string/string.c
+Done processing src/syscall.c
+Done processing tests/graded_test.c
+Done processing tests/graded_test.h
+Done processing tests/io/fstat.c
+Done processing tests/io/ftruncate.c
+Done processing tests/io/lseek.c
+Done processing tests/io/open_close_create_file.c
+Done processing tests/io/open_close_existent_file.c
+Done processing tests/io/open_close_read_byte.c
+Done processing tests/io/open_invalid_access.c
+Done processing tests/io/open_non_existent_file.c
+Done processing tests/io/puts.c
+Done processing tests/io/stat.c
+Done processing tests/io/truncate.c
+Done processing tests/memory/malloc.c
+Done processing tests/memory/malloc_free.c
+Done processing tests/memory/malloc_free_sequence.c
+Done processing tests/memory/malloc_perm_notok.c
+Done processing tests/memory/malloc_perm_ok.c
+Done processing tests/memory/mmap.c
+Done processing tests/memory/mmap_munmap.c
+Done processing tests/memory/mmap_perm_none.c
+Done processing tests/memory/mmap_perm_notok.c
+Done processing tests/memory/mmap_perm_ok.c
+Done processing tests/memory/multiple_malloc.c
+Done processing tests/memory/multiple_malloc_free.c
+Done processing tests/process/nanosleep.c
+Done processing tests/process/sleep.c
+Done processing tests/test_io.c
+Done processing tests/test_memory.c
+Done processing tests/test_string.c
+Total errors found: 6
+make: [Makefile:47: lint] Error 1 (ignored)
+cd .. && shellcheck checker/*.sh tests/*.sh
+
+
+### GRADE
+
+
+Checker:                                                          0/ 90
+Style:                                                            0/ 10
+Total:                                                            0/100
+
+
+### STYLE SUMMARY
+
+
+Total errors found: 6
