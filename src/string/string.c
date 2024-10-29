@@ -18,14 +18,20 @@ char *strcpy(char *destination, const char *source)
 char *strncpy(char *destination, const char *source, size_t len)
 {
 	char *start = destination;
-	while(len != 0 && *source != '\0')
+	while(len > 0 && *source != '\0')
 	{
 		*start = *source;
 		start++;
 		source++;
 		len--;
 	}
-	*start = '\0';
+
+	while(len > 0)
+	{
+		*start = '\0';
+		start++;
+		len--;
+	}
 	return destination;
 }
 
@@ -34,7 +40,7 @@ char *strcat(char *destination, const char *source)
 	char *start = destination;
 	while (*start != '\0')
 	{
-		start ++;
+		start++;
 	}
 
 	while (*source != '\0')
@@ -52,7 +58,7 @@ char *strncat(char *destination, const char *source, size_t len)
 	char *start = destination;
 	while (*start != '\0')
 	{
-		start ++;
+		start++;
 	}
 
 	while(len != 0 && *source != '\0')
@@ -88,7 +94,7 @@ int strncmp(const char *str1, const char *str2, size_t len)
 		str2++;
 		len--;
 	}
-	if(len>0)
+	if(len > 0)
 		return *str1 - *str2;
 	return 0;
 }
@@ -112,7 +118,7 @@ char *strchr(const char *str, int c)
 	{
 		if(*str == c)
 			return (char *)str;
-		str ++;
+		str++;
 	}
 	return NULL;
 }
