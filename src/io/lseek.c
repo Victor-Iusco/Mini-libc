@@ -6,12 +6,22 @@
 
 off_t lseek(int fd, off_t offset, int whence)
 {
-	off_t result = syscall(8, fd, offset, whence);
-
-    if (result == -1) {
-        // Error encountered, errno is automatically set
-        return -1;
+    if (whence != SEEK_SET && whence != SEEK_CUR && whence != SEEK_END) {
+        errno = EINVAL;
+        return (off_t)-1;
     }
 
-    return result;
+    if (whence == SEEK_SET && offset < 0) {
+        errno = EINVAL;
+        return (off_t)-1;
+    }
+
+	long result = syscall(__NR_lseek, fd, offset, whence);
+
+    if (result < 0) {
+        errno = -result;
+        return (off_t)-1;
+    }
+
+    return (off_t)result;
 }

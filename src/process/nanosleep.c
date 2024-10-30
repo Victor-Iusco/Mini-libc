@@ -10,8 +10,7 @@ int nanosleep(const struct timespec *time, struct timespec *time_remaining)
         errno = EINVAL;
         return -1;
     }
-
-    return syscall(35, time, time_remaining);
+    return syscall(__NR_nanosleep, time, time_remaining);
 }
 
 

@@ -62,8 +62,6 @@ static struct mem_list *mem_list_extract(void *start)
 	item = mem_list_find(start);
 	if (item == NULL)
 		return NULL;
-
-	/* Extract item from doubly-linked list. */
 	item->next->prev = item->prev;
 	item->prev->next = item->next;
 	item->next = item;
@@ -92,13 +90,10 @@ void mem_list_cleanup(void)
 	for (iter = mem_list_head.next, tmp = iter->next;
 			iter != &mem_list_head;
 			iter = tmp, tmp = iter->next) {
-		/* Extract item from doubly-linked list. */
 		iter->next->prev = iter->prev;
 		iter->prev->next = iter->next;
 		iter->next = iter;
 		iter->prev = iter;
-
-		/* Free item. */
 		mem_list_free(iter);
 	}
 }
@@ -107,9 +102,7 @@ size_t mem_list_num_items(void)
 {
 	struct mem_list *iter;
 	size_t count = 0;
-
 	for (iter = mem_list_head.next; iter != &mem_list_head; iter = iter->next)
 		count++;
-
 	return count;
 }

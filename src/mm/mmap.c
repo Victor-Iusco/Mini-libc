@@ -5,16 +5,28 @@
 
 void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
 {
-	return syscall(9, addr, length, prot, flags, fd, offset);
+    if (!((flags & MAP_SHARED) || (flags & MAP_PRIVATE)))
+    {
+        errno = EINVAL;
+        return MAP_FAILED;
+    }
+	long a = syscall(__NR_mmap, addr, length, prot, flags, fd, offset);
+
+    if (a < 0)
+    {
+        errno = -a;
+        return MAP_FAILED;
+    }
+    return (void *)a;
 }
 
 void *mremap(void *old_address, size_t old_size, size_t new_size, int flags)
 {
-    return syscall(25, old_address, old_size, new_size, flags);
+    return (void *)syscall(__NR_mremap, old_address, old_size, new_size, flags);
 }
 
 int munmap(void *addr, size_t length)
 {
-    return syscall(11, addr, length);
+    return (int)syscall(__NR_munmap, addr, length);
 }
 

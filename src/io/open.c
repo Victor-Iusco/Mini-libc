@@ -10,20 +10,21 @@ int open(const char *filename, int flags, ...)
 	mode_t mode = 0;
 
     // Check if O_CREAT is in flags to determine if mode is needed
+    va_list args;
     if (flags & O_CREAT) {
-        va_list args;
         va_start(args, flags);
         mode = va_arg(args, mode_t);
         va_end(args);
     }
-
-    // Make the syscall to open the file
-    int fd = syscall(2, filename, flags, mode);
-
-    if (fd == -1) {
-        // Error encountered, errno is automatically set
+    long fd;
+    if (flags & O_CREAT){
+        fd = syscall(__NR_open, filename, flags, mode);
+    }else{
+        fd = syscall(__NR_open, filename, flags);
+    }
+    if (fd < 0) {
+        errno =-fd;
         return -1;
     }
-
     return fd;
 }

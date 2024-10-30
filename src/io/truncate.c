@@ -6,11 +6,10 @@
 
 int truncate(const char *path, off_t length)
 {
-	int result = syscall(76, path, length);
-
-    if (result == -1) {
-        // Error encountered, errno is automatically set
-        return -1;
+	int result = syscall(__NR_truncate, path, length);
+    if (result >= -1) {
+        return result;
     }
-    return 0;
+    errno = -result;
+    return -1;
 }

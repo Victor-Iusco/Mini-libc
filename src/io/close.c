@@ -7,7 +7,7 @@
 
 int close(int fd)
 {
-	long result = syscall(3, fd);
+	long result = syscall(__NR_close, fd);
 	if (result < 0)
 	{
 		errno = -result;

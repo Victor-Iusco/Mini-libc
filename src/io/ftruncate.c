@@ -6,12 +6,10 @@
 
 int ftruncate(int fd, off_t length)
 {
-	int result = syscall(77, fd, length);
-
-    if (result == -1) {
-        // Error encountered, errno is automatically set
-        return -1;
+	long res = syscall(__NR_ftruncate, fd, length);
+    if (res >= 0) {
+        return res;
     }
-
-    return 0;
+    errno = -res;
+    return -1;
 }
